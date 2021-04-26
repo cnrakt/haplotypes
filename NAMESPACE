@@ -1,0 +1,69 @@
+import(methods)
+import(stats)
+import(network)
+import(ape)
+import(phangorn)
+
+
+importFrom("stats", "as.dist", "dist", "integrate")
+importFrom("utils", "combn", "head")
+importFrom("sna", "geodist")
+importFrom("grDevices", "rainbow")
+importFrom("graphics", "lines", "locator", "mtext", "par", "plot",
+             "rect", "strheight", "strwidth", "text")
+importFrom("utils", "setTxtProgressBar", "txtProgressBar")
+importFrom("plotrix", "floating.pie")
+
+
+
+exportPattern("^[[:alpha:]]+")
+exportMethods(
+    "[",
+    "[<-",
+    "append",
+    "as.data.frame",
+    "as.dna",
+    "as.DNAbin",
+    "as.list",
+    "as.matrix",
+    "as.network",
+    "as.networx",
+    "as.numeric",
+    "as.phyDat",
+    "basecomp",
+    "boot.dna",
+    "distance",
+    "grouping",
+    "haplotype",
+    "hapreord",
+    "homopoly",
+    "image",
+    "indelcoder",
+    "length",
+    "names",
+    "names<-",
+    "ncol",
+    "nrow",
+    "pairnei",
+    "pairPhiST",
+    "parsimnet",
+    "plot",
+    "pielegend",
+    "pieplot",
+    "polymorp",
+    "remove.gaps",
+    "rownames",
+    "rownames<-",
+    "show",
+    "subs",
+    "tolower",
+    "toupper",
+    "unique"
+)
+exportClasses(
+     "Parsimnet",
+     "Haplotype",
+     "Dna" 
+)
+
+
