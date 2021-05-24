@@ -802,7 +802,7 @@ setMethod(f="plot", signature(x = "Parsimnet", y = "missing"), definition=functi
 }
 )
 
-
+#bug in col, will be fixed, may 2021
 #new function: pieplot
 #Generic pieplot
 
