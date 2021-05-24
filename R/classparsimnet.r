@@ -802,7 +802,7 @@ setMethod(f="plot", signature(x = "Parsimnet", y = "missing"), definition=functi
 }
 )
 
-#bug in col, will be fixed, may 2021
+#bug in col, fixed, may 2021
 #new function: pieplot
 #Generic pieplot
 
@@ -883,9 +883,9 @@ setMethod(f="pieplot", signature= c("Parsimnet","Haplotype"), definition=functio
     
     if(is.null(coord))
     {
-        if(dots$mode=="circle") coords<-network.layout.circle(nw=nw, layout.par=dots$layout.par)
-        if(dots$mode=="fruchtermanreingold") coords<-network.layout.fruchtermanreingold(nw=nw, layout.par=dots$layout.par)
-        if(dots$mode=="kamadakawai") coords<-network.layout.kamadakawai(nw=nw, layout.par=dots$layout.par)
+        if(dots$mode=="circle") coords<-network::network.layout.circle(nw=nw, layout.par=dots$layout.par)
+        if(dots$mode=="fruchtermanreingold") coords<-network::network.layout.fruchtermanreingold(nw=nw, layout.par=dots$layout.par)
+        if(dots$mode=="kamadakawai") coords<-network::network.layout.kamadakawai(nw=nw, layout.par=dots$layout.par)
     } else coords<-coord
     
     cx <- coords[, 1]
@@ -916,7 +916,7 @@ setMethod(f="pieplot", signature= c("Parsimnet","Haplotype"), definition=functio
     
     localfloating.pie<-function(bos) bos
     
-    eval(parse(text=paste("localfloating.pie<-","function", "(","...,", paste( arg1_2,collapse=",",sep=" "),")","{","floating.pie(...)","}",collapse="")))
+    eval(parse(text=paste("localfloating.pie<-","function", "(","...,", paste( arg1_2,collapse=",",sep=" "),")","{","plotrix::floating.pie(...)","}",collapse="")))
     
     rds<-dots$radius
     cls<-dots$col
@@ -924,7 +924,8 @@ setMethod(f="pieplot", signature= c("Parsimnet","Haplotype"), definition=functio
     
     for(i in 1: nhap)
     {
-        args.flp <- c(list(xpos = cx[i],ypos=cy[i],x=g[i,], radius=rds[i],col= cls[g[i,]>0],startpos=0),c(dots2,list(main=nm)))
+        
+        args.flp <- c(list(xpos = cx[i],ypos=cy[i],x=g[i,], radius=rds[i],col= cls,startpos=0),c(dots2,list(main=nm)))
         do.call(localfloating.pie,  args.flp)
     }
     
