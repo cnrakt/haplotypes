@@ -930,7 +930,7 @@ setMethod(f="pieplot", signature= c("Parsimnet","Haplotype"), definition=functio
     }
     
     
-    if(nrow(d)-nhap) network.vertex(cx[-c(1:nhap)], cy[-c(1:nhap)], radius=dots$vertex.cex , sides = dots$vertex.sides, border = 1, col = dots$vertex.col, lty = 1, rot = 0, lwd = 1)
+    if(nrow(d)-nhap) network::network.vertex(cx[-c(1:nhap)], cy[-c(1:nhap)], radius=dots$vertex.cex , sides = dots$vertex.sides, border = 1, col = dots$vertex.col, lty = 1, rot = 0, lwd = 1)
     
     
     
