@@ -9,4 +9,7 @@ This is the latest, bug free (hopefully) version of package haplotypes.
 
 install.packages("devtools")
 
-https://cran.r-project.org/web/packages/haplotypes/index.html
+#### Step 2: Install the package haplotypes from GitHub 
+
+library(devtools)
+install_github("cnrakt/haplotypes")
