@@ -12,6 +12,7 @@ install.packages("devtools")
 #### Step 2: Install the package haplotypes from GitHub 
 
 library(devtools)
+
 install_github("cnrakt/haplotypes")
 
 #### Step 3: Restart the R session
