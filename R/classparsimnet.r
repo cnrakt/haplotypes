@@ -925,7 +925,7 @@ setMethod(f="pieplot", signature= c("Parsimnet","Haplotype"), definition=functio
     for(i in 1: nhap)
     {
         
-        args.flp <- c(list(xpos = cx[i],ypos=cy[i],x=g[i,], radius=rds[i],col= cls,startpos=0),c(dots2,list(main=nm)))
+        args.flp <- c(list(xpos = cx[i],ypos=cy[i],x=g[i,][g[i,]>0], radius=rds[i],col= cls,startpos=0),c(dots2,list(main=nm)))
         do.call(localfloating.pie,  args.flp)
     }
     
