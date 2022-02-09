@@ -1,7 +1,7 @@
 # Package haplotypes
 
 
-This is the latest, bug free (hopefully) version of package haplotypes. 
+This is the latest, (hopefully) bug free version of package haplotypes. 
 
 ### Installation:
 
