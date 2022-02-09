@@ -15,6 +15,6 @@ library(devtools)
 
 install_github("cnrakt/haplotypes")
 
-#### Step 3: Restart the R session
+#### Step 3: Restart the R session & reload package
 
 library(haplotypes)
