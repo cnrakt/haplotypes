@@ -3,7 +3,7 @@
 
 This is the latest, bug free (hopefully) version of package haplotypes. 
 
-### Installation 
+### Installation:
 
 #### Step 1: Install the devtools package if it is not already installed:
 
