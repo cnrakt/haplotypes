@@ -165,14 +165,34 @@ setMethod("nrow","Dna", function(x)
 #fixing a bug in Extract, July 2016
 #Extract method for Dna objects
 
-setMethod("[","Dna", function(x,i=1:nrow(x),j=1:ncol(x),as.matrix=TRUE)
+#setMethod("[","Dna", function(x,i=1:nrow(x),j=1:ncol(x),as.matrix=TRUE)
+#{
+#    seq<-x@sequence[i,j,drop=FALSE]
+#    lseq<-ncol(seq)
+#    seqnames<-x@seqnames[i]
+#    if(as.matrix) return(seq) else new("Dna",sequence=seq,seqlengths=rep(lseq,nrow(seq)),seqnames=seqnames)
+#    
+#})
+
+#fixing a change in R base, adding drop argument June 2023
+
+setMethod("[", "Dna", function(x, i = 1:nrow(x), j = 1:ncol(x), drop = FALSE, as.matrix = TRUE)
 {
-    seq<-x@sequence[i,j,drop=FALSE]
-    lseq<-ncol(seq)
-    seqnames<-x@seqnames[i]
-    if(as.matrix) return(seq) else new("Dna",sequence=seq,seqlengths=rep(lseq,nrow(seq)),seqnames=seqnames)
-    
+    seq <- x@sequence[i,j,drop=drop]
+    lseq <- ncol(seq)
+    seqnames <- x@seqnames[i]
+
+    if(as.matrix) {
+        if(drop && (nrow(seq) == 1 || ncol(seq) == 1)) {
+            return(as.vector(seq)) # convert to vector if drop is TRUE and seq is a single row/column
+        } else {
+            return(seq) 
+        }
+    } else {
+        new("Dna", sequence=seq, seqlengths=rep(lseq, nrow(seq)), seqnames=seqnames)
+    }
 })
+
 
 
 #Extract replace method for Dna objects
