@@ -176,23 +176,47 @@ setMethod("nrow","Dna", function(x)
 
 #fixing a change in R base, adding drop argument June 2023
 
-setMethod("[", "Dna", function(x, i = 1:nrow(x), j = 1:ncol(x), drop = FALSE, as.matrix = TRUE)
-{
-    seq <- x@sequence[i,j,drop=drop]
-    lseq <- ncol(seq)
-    seqnames <- x@seqnames[i]
+#setMethod("[", "Dna", function(x, i = 1:nrow(x), j = 1:ncol(x), drop = FALSE, as.matrix = TRUE)
+#{
+#    seq <- x@sequence[i,j,drop=drop]
+#    lseq <- ncol(seq)
+#    seqnames <- x@seqnames[i]
 
-    if(as.matrix) {
-        if(drop && (nrow(seq) == 1 || ncol(seq) == 1)) {
-            return(as.vector(seq)) # convert to vector if drop is TRUE and seq is a single row/column
-        } else {
-            return(seq) 
+#    if(as.matrix) {
+#        if(drop && (nrow(seq) == 1 || ncol(seq) == 1)) {
+#            return(as.vector(seq)) # convert to vector if drop is TRUE and seq is a single row/column
+#        } else {
+#           return(seq) 
+#        }
+#    } else {
+#        new("Dna", sequence=seq, seqlengths=rep(lseq, nrow(seq)), seqnames=seqnames)
+#    }
+#})
+
+
+#fixing a change in R base, adding drop argument  July 11, 2023
+#Extract method for Dna objects
+setMethod("[", "Dna",
+    function(x, i = 1:nrow(x), j = 1:ncol(x), ..., drop=FALSE) {
+        # Default values
+        as.matrix <- TRUE
+
+        # Check if as.matrix is supplied in ...
+        args <- list(...)
+        if ("as.matrix" %in% names(args)) {
+            as.matrix <- args[["as.matrix"]]
         }
-    } else {
-        new("Dna", sequence=seq, seqlengths=rep(lseq, nrow(seq)), seqnames=seqnames)
-    }
-})
 
+        if(as.matrix) {
+                seq <- x@sequence[i,j,drop=drop]
+                return(seq)
+            
+        } else {
+            seq <- x@sequence[i,j,drop=FALSE]
+            return(new("Dna", sequence=seq, seqlengths=rep(ncol(seq), nrow(seq)), seqnames=rownames(seq)))
+        }
+    }
+)
 
 
 #Extract replace method for Dna objects
