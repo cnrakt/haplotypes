@@ -12,6 +12,4 @@ URL: https://cran.r-project.org,
         https://biolsystematics.wordpress.com/r/
 Imports: methods, stats, utils, network, sna, ape, phangorn,plotrix
 NeedsCompilation: no
-Packaged: 2020-02-28 12:33:59 UTC; cnr
-Repository: CRAN
-Date/Publication: 2020-02-28 13:50:06 UTC
+Packaged: 2023-07-12 05:58:08 UTC; cnr
