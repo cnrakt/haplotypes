@@ -2,6 +2,7 @@
 
 
 This is the latest, (hopefully) bug free version of package haplotypes. 
+(25 July 2023)
 
 ### Installation:
 
