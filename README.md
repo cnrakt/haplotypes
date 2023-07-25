@@ -1,7 +1,7 @@
 # Package haplotypes
 
 
-As of July 25, 2023, this is the latest release of Package haplotypes. It is hoped to be bug-free. It also corresponds to the version currently hosted on CRAN.
+As of July 25, 2023, this is the latest release of Package haplotypes (1.1.3.1). It is hoped to be bug-free. It also corresponds to the version currently hosted on CRAN.
 
 ### Installation:
 
